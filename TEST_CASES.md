@@ -29,7 +29,7 @@
 | TC_P_18 | SPEC 4.3.2 | транспорт: `location_state="surface"`, `strength=100.0`, `reactor_energy=100.0`, `distance=0.0` | `driver.long_jump(use_reactor=True)` | `distance=45.0`, `strength=86.0`, `reactor_energy=50.0` | high |
 | TC_P_19 | SPEC 4.3.2 | транспорт: `location_state="underground"`, `strength=100.0`, `reactor_energy=100.0`, `distance=0.0` | `driver.drill_forward()` | `distance=40.0`, `strength=84.0`, `reactor_energy=50.0` | high |
 | TC_P_20 | SPEC 4.3.3 | транспорт: `strength=80.0`, `reactor_energy=90.0`, `location_state="surface"`, `distance=20.0` | `driver.get_current_status()` | `{"distance": 20.0, "strength": 80.0, "reactor_energy": 90.0, "location_state": "surface"}` | medium |
-| TC_N_21 | SPEC 3.2 | — | `TerraHopper(name="", mass_kg=200.0)` | `ValueError` — "Имя не может быть пустым." | high |
+| TC_N_21 | SPEC 3.2 | — | `TerraHopper(name="", mass_kg=200.0)`; `TerraHopper(name="   ", mass_kg=200.0)` | `ValueError` — "Имя не может быть пустым." | high |
 | TC_N_22 | SPEC 3.2 | — | `TerraHopper("Крот-1", mass_kg=90.0)` | `ValueError` — "Масса должна быть в диапазоне 100.0…500.0 кг." | high |
 | TC_N_23 | SPEC 3.2 | — | `TerraHopper("Крот-1", mass_kg=550.0)` | `ValueError` — "Масса должна быть в диапазоне 100.0…500.0 кг." | medium |
 | TC_N_24 | SPEC 3.2 | — | `TerraHopper("Крот-1", 200.0, strength=110.0)` | `ValueError` — "Сила должна быть в диапазоне 0…100." | medium |

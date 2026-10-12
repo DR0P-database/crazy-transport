@@ -99,6 +99,17 @@ class TestTerraHopperInit(Steps):
                                         name="",
                                         mass_kg=Mass.DEFAULT)  # fmt: skip
 
+    def test_n21b_init_whitespace_name_raises(self):
+        """TC_N_21: имя состоит только из пробелов."""
+        # Act + Assert
+
+        self.step("Проверка ошибки при имени из пробелов")
+        self.assert_raises_with_message(exception=ValueError,
+                                        message=Messages.EMPTY_NAME,
+                                        action=TerraHopper,
+                                        name="   ",
+                                        mass_kg=Mass.DEFAULT)  # fmt: skip
+
     def test_n22_init_mass_below_min_raises(self):
         """TC_N_22: масса меньше минимальной."""
         # Act + Assert
