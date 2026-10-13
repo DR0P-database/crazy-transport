@@ -9,7 +9,7 @@
 
 Дата заморозки: 10.10.26
 
-Версия: <1.0>
+Версия: <1.1.0>
 
 # 1. Назначение
 Земляной Кенгуру-Крот «Терра-Хоппер» — гибридное средство передвижения, сочетающее упругую кинетику прыжков с реактивным ускорением и подземным бурением.
@@ -434,7 +434,7 @@ get_current_status
 
 * **Arrange:** name="Крот-1", mass_kg=200.0, strength=80.0, reactor_energy=90.0, location_state="surface", distance=20.0
 * **Act:** `get_current_status()`
-* **Assert:** возвращается `{"distance": 20.0, "strength": 80.0, "reactor_energy": 90.0}`; `distance == 20.0`, `strength == 80.0`, `reactor_energy == 90.0`
+* **Assert:** возвращается `{"distance": 20.0, "strength": 80.0, "reactor_energy": 90.0, "location_state": "surface"}`; `distance == 20.0`, `strength == 80.0`, `reactor_energy == 90.0`
 
 ```python
 go_underground
@@ -517,6 +517,12 @@ drill_forward
 ##### Сценарий 21. Пустое имя
 
 * **Arrange:** name="", mass_kg=200.0
+* **Act:** `TerraHopper(name, mass_kg)`
+* **Assert:** `ValueError` — "Имя не может быть пустым."
+
+##### Сценарий 21б. Имя из пробелов
+
+* **Arrange:** name="   ", mass_kg=200.0
 * **Act:** `TerraHopper(name, mass_kg)`
 * **Assert:** `ValueError` — "Имя не может быть пустым."
 
@@ -876,7 +882,7 @@ Exception
 |---|---|---|
 | Инициализация параметрами по умолчанию | 3.2 | `test_p1_init_with_defaults` (TC_P_1) |
 | Инициализация всеми параметрами | 3.2 | `test_p2_init_with_all_parameters` (TC_P_2) |
-| Валидация пустого имени | 3.2 | `test_n21_init_empty_name_raises` (TC_N_21) |
+| Валидация пустого имени и имени из пробелов | 3.2 | `test_n21_init_empty_name_raises`, `test_n21b_init_whitespace_name_raises` (TC_N_21) |
 | Валидация массы | 3.2 | `test_n22_init_mass_below_min_raises`, `test_n23_init_mass_above_max_raises` (TC_N_22, TC_N_23) |
 | Валидация силы | 3.2 | `test_n24_init_strength_above_max_raises` (TC_N_24) |
 | Валидация энергии реактора | 3.2 | `test_n25_init_reactor_energy_below_min_raises` (TC_N_25) |
